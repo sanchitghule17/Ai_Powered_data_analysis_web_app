@@ -1,29 +1,26 @@
+# 📈 AI-Powered Data Analyst Web App
 
-# 📊 AI-Powered Data Analyst Web App
-
-This is a simple AI-powered web application that allows users to upload a dataset (CSV file) and receive intelligent, automated analysis such as insights, summaries, and visualizations. It is designed to help non-technical users understand their data easily using natural language processing and data visualization tools.
+This is a lightweight AI-powered data analysis tool built using **Streamlit**. Users can upload a `.csv` file and get automatic insights, summary statistics, and visualizations — all within a simple web interface. This project runs locally on your machine.
 
 ---
 
 ## 🚀 Features
 
-- Upload CSV files directly from your system
-- Automatic data cleaning and processing
-- Summary statistics (mean, median, mode, etc.)
-- Data visualizations (bar chart, pie chart, line plot, etc.)
-- Smart insights generation using AI (e.g., “Most frequent category”, “Anomalies detected”)
-- Simple and intuitive UI
+- Upload and preview CSV files
+- Automatic data cleaning
+- Summary statistics (count, mean, std, min, max, etc.)
+- Visualizations (bar chart, line chart, pie chart, histogram)
+- Basic AI-like insights from the dataset
+- Clean and user-friendly interface
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript, Bootstrap
-- **Backend:** Python (Flask)
-- **AI/ML:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
-- **Deployment (optional):** Localhost / Render / Streamlit
+- **Frontend & App:** Streamlit
+- **Backend/Logic:** Python (Pandas, NumPy, Matplotlib, Seaborn)
+- **Visualization:** Matplotlib, Seaborn, Plotly (optional)
 
 ---
-
 
 

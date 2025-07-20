@@ -22,38 +22,28 @@ def _default_models(task: str) -> dict[str, object]:
 
 
 def train_and_evaluate(
-    X: np.ndarray,
-    y: np.ndarray,
-    task: str,
-    *,
-    test_size: float = 0.20,
-    random_state: int = 42,
-) -> tuple[dict[str, float], str, np.ndarray, np.ndarray]:
-    X_train, X_test, y_train, y_test = train_test_split(
+    X, y, task, *, test_size=0.20, random_state=42
+):
+    X_tr, X_te, y_tr, y_te = train_test_split(
         X, y, test_size=test_size, random_state=random_state
     )
 
     models = _default_models(task)
-    scores: dict[str, float] = {}
-    best_name: str | None = None
-    best_score: float = -np.inf
-    best_preds: np.ndarray | None = None
+    scores, best_name, best_score = {}, None, -np.inf
+    best_preds, best_model = None, None
 
-    for name, model in models.items():
-        model.fit(X_train, y_train)
-        preds = model.predict(X_test)
+    for name, mdl in models.items():
+        mdl.fit(X_tr, y_tr)
+        preds = mdl.predict(X_te)
 
-        if task == "regression":
-            score = -mean_squared_error(y_test, preds)
-        else:
-            score = accuracy_score(y_test, preds)
-
+        score = (
+            -mean_squared_error(y_te, preds)
+            if task == "regression" else accuracy_score(y_te, preds)
+        )
         scores[name] = score
 
         if score > best_score:
-            best_name = name
-            best_score = score
-            best_preds = preds
+            best_name, best_score = name, score
+            best_preds, best_model = preds, mdl      # keep the fitted estimator
 
-    assert best_name is not None and best_preds is not None
-    return scores, best_name, y_test, best_preds
+    return scores, best_name, y_te, best_preds, best_model

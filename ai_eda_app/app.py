@@ -7,7 +7,9 @@ import streamlit as st
 from modeling import train_and_evaluate
 from eda import show_overview, value_counts, pairplot
 from preprocessing import clean_data
-
+from explain import shap_summary
+from tuning import optimise_rf
+from tuning import optimise_rf
 
 # ─────────────────────────────
 #  Page & app-level settings
@@ -189,7 +191,7 @@ if file:  # everything else lives inside this block
             else "classification"
         )
 
-        results, best_name, y_test, preds = train_and_evaluate(X_new, y, task)
+        results, best_name, y_test, preds, best_model = train_and_evaluate(X_new, y, task)
 
         st.write(results)
         st.success(f'🎯 Best Model: **{best_name}**')
@@ -203,3 +205,11 @@ if file:  # everything else lives inside this block
                 title='Actual vs Predicted'
             )
         )
+        if st.checkbox("Show SHAP explanation"):
+            shap_summary(best_model, pd.DataFrame(X_new, columns=sel_cols))
+    with st.expander("🛠 Hyper-parameter Tuning (Optuna)"):
+        if st.checkbox("Run 30-trial Optuna optimisation"):
+            with st.spinner("Optimising…"):
+                best_params, best_score = optimise_rf(X_new, y, task)
+            st.write("Best params:", best_params)
+            st.success(f"Optimised CV score: {best_score:.3f}")

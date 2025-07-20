@@ -1,0 +1,15 @@
+# Core libraries
+pandas>=2.2
+numpy>=1.26
+plotly>=5.22
+streamlit>=1.34
+
+# Scikit-learn stack
+scikit-learn>=1.5
+
+# Testing
+pytest>=8.0
+
+# Optional (comment-in when you add these features)
+# optuna>=3.6          # hyper-parameter tuning
+# shap>=0.45           # model explainability

@@ -1,5 +1,9 @@
 # 📊 AI-Powered Data Analysis Web App
+[![CI](https://github.com/sanchitghule17/Ai_Powered_data_analysis_web_app/actions/workflows/ci.yml/badge.svg)](https://github.com/sanchitghule17/Ai_Powered_data_analysis_web_app/actions/workflows/ci.yml)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_cloud.svg)](https://aipowereddataanalysiswebapp-ublapprbdmaarkbqtls9dm7.streamlit.app/)
 
+Live demo → **https://aipowereddataanalysiswebapp-ublapprbdmaarkbqtls9dm7.streamlit.app/**  
+GitHub repo → **https://github.com/sanchitghule17/Ai_Powered_data_analysis_web_app**
 
 
 A one-click Streamlit dashboard that transforms any CSV / Excel file into an **EDA → AutoML → Hyper-parameter tuning → SHAP explainability** workflow.  
